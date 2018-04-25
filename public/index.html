@@ -19,27 +19,26 @@
     <h1 id = 'title'> Battle Camp Database </h1>
     <br>
       <h2>Dummy Data</h2>
-        <ul ng-repeat = 'camper in camper_list'>
+       <!-- <ul ng-repeat = 'camper in camper_list'>
             <li>{{camper.id}}</li>
             <ul ng-repeat = 'mob in camper.mob_list'>
                 <li>{{mob.name}}</li>
                 <li><img src = {{mob.pic}}></li>
             </ul>
-        </ul>
+        </ul>-->
       <h2>End Dummy Data</h2>
     <h2 id = 'add-player-to-db-title'> Add a player </h2>
     <br>
-    <form id = 'add-player-to-db'>
+    <form class = 'form-control' id = 'add-player-to-db'>
       Player ID:
-      <input id = 'add-player-id' type = 'text' value = ''>
+      <input ng-model="new_camper">
       <br>
-      <input id = 'add-player-id-btn' type = 'submit' value = 'Add'>
+      <button class = 'btn btn-primary' ng-click='addPlayer()'>Add</button>
       <br>
     </form>
     <h2 id = 'player-id'> Look up player-id </h2>
     <form id = 'db-lookup'>
       Player ID:
-      <br>
       <input id = 'db-lookup-id' type = 'text' value = ''>
       <br>
       <input id ='db-lookup-btn' type='submit' value='Search'>
@@ -96,14 +95,20 @@
             $scope.camper_list = res.data;
             console.log(res.length);
             console.log($scope.camper_list.length);
-        }
+        };
 
         function failCallback(err){
             console.log('unsuccessful in receiving JSON object from server');
             console.log(err.message);
-        }
+        };
+
+        $scope.addPlayer = function(){
+            console.log($scope.new_camper);
+            $http.post('/BattleCampDB', $scope.new_camper);
+        };
 
       }]);
+
 
     </script>
 
