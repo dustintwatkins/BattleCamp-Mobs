@@ -1,0 +1,110 @@
+<!doctype html>
+
+<html ng-app = 'myApp'>
+  <head>
+
+    <!--Bootstrap css Apr. 24 2018
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      -->
+    <!--Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+      <!--Stylesheet link -->
+      <link rel="stylesheet" type="text/css" href="main.css">
+
+
+  </head>
+  <body>
+  <div class ='outer-container' ng-controller = 'appCtrl'>
+    <h1 id = 'title'> Battle Camp Database </h1>
+    <br>
+      <h2>Dummy Data</h2>
+        <ul ng-repeat = 'camper in camper_list'>
+            <li>{{camper.id}}</li>
+            <ul ng-repeat = 'mob in camper.mob_list'>
+                <li>{{mob.name}}</li>
+                <li><img src = {{mob.pic}}></li>
+            </ul>
+        </ul>
+      <h2>End Dummy Data</h2>
+    <h2 id = 'add-player-to-db-title'> Add a player </h2>
+    <br>
+    <form id = 'add-player-to-db'>
+      Player ID:
+      <input id = 'add-player-id' type = 'text' value = ''>
+      <br>
+      <input id = 'add-player-id-btn' type = 'submit' value = 'Add'>
+      <br>
+    </form>
+    <h2 id = 'player-id'> Look up player-id </h2>
+    <form id = 'db-lookup'>
+      Player ID:
+      <br>
+      <input id = 'db-lookup-id' type = 'text' value = ''>
+      <br>
+      <input id ='db-lookup-btn' type='submit' value='Search'>
+    </form>
+    <br>
+    <h2 id = 'add-mob-title'> Add Mob to Inventory </h2>
+    <br>
+    <form id = 'add-mob'>
+      Player ID:
+      <input id = 'add-mob-id' type = 'text' value = ''>
+      <br>
+      Mob Name:
+      <input id = 'add-mob-name' type = 'text' value = ''>
+      <br>
+      Mob Sign:
+      <input id = 'add-mob-sign' type = 'text' value = ''>
+      <br>
+      Passive:
+      <input id = 'add-mob-passive' type = 'text' value = ''>
+      <br>
+      Ability:
+      <input id = 'add-mob-ability' type = 'text' value = ''>
+      <br>
+      Power Rating:
+      <input id = 'add-mob-pr' type = 'text' value = ''>
+      <br>
+      Attack:
+      <input id = 'add-mob-atk' type = 'text' value = ''>
+      <br>
+      Health:
+      <input id = 'add-mob-health' type = 'text' value = ''>
+      <br>
+      Recovery:
+      <input id = 'add-mob-recovery' type = 'text' value = ''>
+      <br>
+      <input id = 'add-mob-btn' type = 'submit' value = 'Add'>
+    </form>
+  </div> <!-- end outer-container-->
+</body>
+    <!--Angular source -->
+    <script src = 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js'></script>
+
+    <!--Angular JS File -->
+    <script >
+      var app = angular.module('myApp', []);
+
+      app.controller('appCtrl', ['$scope', '$http', function($scope, $http){
+        console.log('hello from angular!');
+
+        $http.get('/camper_list').then(doneCallback, failCallback);
+
+        function doneCallback(res){
+            console.log('JSON data received');
+            $scope.camper_list = res.data;
+            console.log(res.length);
+            console.log($scope.camper_list.length);
+        }
+
+        function failCallback(err){
+            console.log('unsuccessful in receiving JSON object from server');
+            console.log(err.message);
+        }
+
+      }]);
+
+    </script>
+
+</html>
