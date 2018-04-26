@@ -1,9 +1,101 @@
 img{
     border-radius:50%;
-    height:75px;
-    width: 75px;
+    height: 100px;
+    width: 100px;
 }
 
 ul{
     list-style: none;
+}
+
+.header{
+    overflow: hidden;
+    padding: 30px 20px;
+    background-color: dodgerblue;
+    font-family: 'Luckiest Guy', cursive;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+.header a{
+    color: white;
+}
+
+.header a.header_title{
+    font-size: 50px;
+
+}
+
+.btns{
+    text-align: center;
+}
+
+#tog_addPlayer{
+    text-align: center;
+    background-color: mediumseagreen;
+    width: 33%;
+    padding: 100px 50px;
+    font-family: 'Luckiest Guy', cursive;
+    color:white;
+    font-size: 30px;
+}
+
+.add_player{
+    width:33%;
+    text-align: center;
+}
+
+.lookup{
+    width:33%;
+    text-align: center;
+    margin-left: 33%;
+}
+
+.add{
+    width:33%;
+    text-align: center;
+    margin-left: 66%;
+}
+
+.delete{
+    width: 40%;
+    margin-left: 30%;
+    text-align: center;
+    padding: 30px 15px;
+    background-color: lightcoral;
+    font-family: 'Luckiest Guy', cursive;
+    color:white;
+    font-size: 25px;
+}
+
+#tog_lookup{
+    background-color: mediumseagreen;
+    width: 33%;
+    padding: 100px 50px;
+    font-family: 'Luckiest Guy', cursive;
+    color:white;
+    font-size: 30px;
+}
+
+#tog_addMob{
+    background-color: mediumseagreen;
+    width: 33%;
+    padding: 100px 50px;
+    font-family: 'Luckiest Guy', cursive;
+    color:white;
+    font-size: 30px;
+}
+
+#add-player-to-db{
+    display: none;
+}
+
+#add_mob{
+    display: none;
+}
+
+#db_lookup{
+    display: none;
 }

@@ -3,79 +3,91 @@
 <html ng-app = 'myApp'>
   <head>
 
-    <!--Bootstrap css Apr. 24 2018
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-      -->
     <!--Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-      <!--Stylesheet link -->
-      <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <!--Stylesheet link -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
 
   </head>
   <body>
+  <div class = 'header'>
+    <a href = '#BattleCamp' class = 'header_title'>Battle Camp</a>
+  </div>
   <div class ='outer-container' ng-controller = 'appCtrl'>
-    <h1 id = 'title'> Battle Camp Database </h1>
     <br>
-      <h2>Dummy Data</h2>
-       <!-- <ul ng-repeat = 'camper in camper_list'>
-            <li>{{camper.id}}</li>
-            <ul ng-repeat = 'mob in camper.mob_list'>
-                <li>{{mob.name}}</li>
-                <li><img src = {{mob.pic}}></li>
-            </ul>
-        </ul>-->
-      <h2>End Dummy Data</h2>
-    <h2 id = 'add-player-to-db-title'> Add a player </h2>
-    <br>
-    <form class = 'form-control' id = 'add-player-to-db'>
-      Player ID:
-      <input ng-model="new_camper">
-      <br>
-      <button class = 'btn btn-primary' ng-click='addPlayer()'>Add</button>
-      <br>
-    </form>
-    <h2 id = 'player-id'> Look up player-id </h2>
-    <form id = 'db-lookup'>
-      Player ID:
-      <input id = 'db-lookup-id' type = 'text' value = ''>
-      <br>
-      <input id ='db-lookup-btn' type='submit' value='Search'>
-    </form>
-    <br>
-    <h2 id = 'add-mob-title'> Add Mob to Inventory </h2>
-    <br>
-    <form id = 'add-mob'>
-      Player ID:
-      <input id = 'add-mob-id' type = 'text' value = ''>
-      <br>
-      Mob Name:
-      <input id = 'add-mob-name' type = 'text' value = ''>
-      <br>
-      Mob Sign:
-      <input id = 'add-mob-sign' type = 'text' value = ''>
-      <br>
-      Passive:
-      <input id = 'add-mob-passive' type = 'text' value = ''>
-      <br>
-      Ability:
-      <input id = 'add-mob-ability' type = 'text' value = ''>
-      <br>
-      Power Rating:
-      <input id = 'add-mob-pr' type = 'text' value = ''>
-      <br>
-      Attack:
-      <input id = 'add-mob-atk' type = 'text' value = ''>
-      <br>
-      Health:
-      <input id = 'add-mob-health' type = 'text' value = ''>
-      <br>
-      Recovery:
-      <input id = 'add-mob-recovery' type = 'text' value = ''>
-      <br>
-      <input id = 'add-mob-btn' type = 'submit' value = 'Add'>
-    </form>
+    <div class = 'btns'>
+      <button id = 'tog_addPlayer' ng-click='toggle_addPlayer()'>Add Player</button>
+      <button id = 'tog_lookup' ng-click = 'toggle_lookup()'>Lookup Player</button>
+      <button id = 'tog_addMob' ng-click = 'toggle_addMob()'>Add Mob</button>
+    </div>
+    <div class = 'add_player'>
+      <form id = 'add-player-to-db'>
+        Player ID:
+        <input ng-model="new_camper">
+        <br>
+        <button class = 'btn btn-primary' ng-click='addPlayer()'>Add</button>
+      </form>
+    </div>
+    <div class = 'lookup'>
+      <form id = 'db_lookup'>
+        Player ID:
+        <input ng-model='lookup_player'>
+        <br>
+        <button id ='db-lookup-btn' ng-click='lookupPlayer()'>Search</button>
+      </form>
+      <div id = 'load_player'>
+
+      </div>
+    </div>
+    <div class = 'add'>
+      <form id = 'add_mob'>
+        Player ID:
+        <input ng-model = 'add_pid'>
+        <br>
+        Mob Name:
+        <input ng-model = 'add_name' type = 'text' value = ''>
+        <br>
+        Picture:
+        <input ng-model = 'add_pic' value = ''>
+        <br>
+        Mob Sign:
+        <input ng-model = 'add_sign' type = 'text' value = ''>
+        <br>
+        Passive:
+        <input ng-model = 'add_passive' type = 'text' value = ''>
+        <br>
+        Ability:
+        <input ng-model = 'add_ability' type = 'text' value = ''>
+        <br>
+        Power Rating:
+        <input ng-model = 'add_pr' type = 'text' value = ''>
+        <br>
+        Attack:
+        <input ng-model = 'add_atk' type = 'text' value = ''>
+        <br>
+        Health:
+        <input ng-model = 'add_health' type = 'text' value = ''>
+        <br>
+        Recovery:
+        <input ng-model = 'add_recv' type = 'text' value = ''>
+        <br>
+        <button ng-click = addMob()>Add</button>
+      </form>
+    </div>
+    <div class = 'delete'>
+      <form id = 'delete_player'>
+        Delete Player by ID:
+        <input ng-model= 'delete_player' type = 'text' value = ''>
+        <button ng-click = 'deletePlayer()'>Delete</button>
+      </form>
+    </div>
   </div> <!-- end outer-container-->
 </body>
     <!--Angular source -->
@@ -90,10 +102,10 @@
 
         $http.get('/camper_list').then(doneCallback, failCallback);
 
+
         function doneCallback(res){
             console.log('JSON data received');
             $scope.camper_list = res.data;
-            console.log(res.length);
             console.log($scope.camper_list.length);
         };
 
@@ -102,9 +114,136 @@
             console.log(err.message);
         };
 
-        $scope.addPlayer = function(){
-            console.log($scope.new_camper);
-            $http.post('/BattleCampDB', $scope.new_camper);
+          //Hide/Display html for adding camper
+          $scope.toggle_addPlayer = function() {
+              console.log('toggle add player form');
+              var x = document.getElementById("add-player-to-db");
+              if (x.style.display === "block") {
+                  x.style.display = "none";
+              } else {
+                  x.style.display = "block";
+              }
+          };
+
+          $scope.toggle_lookup = function(){
+              var x = document.getElementById("db_lookup");
+              if (x.style.display === "block") {
+                  x.style.display = "none";
+              } else {
+                  x.style.display = "block";
+              }
+          };
+
+          $scope.toggle_addMob = function(){
+              var x = document.getElementById("add_mob");
+              if (x.style.display === "block") {
+                  x.style.display = "none";
+              } else {
+                  x.style.display = "block";
+              }
+          }
+
+          $scope.addPlayer = function(){
+            if($scope.new_camper != undefined) {
+
+                var camper_obj = {pid: $scope.new_camper, mob_list: []};
+                $http.post('/ADDBattleCampDB', camper_obj).then(function(response){
+                    console.log(response);
+                    alert('Succesfully added ' + response.config.data.pid);
+                });
+
+            }
+            else {
+                alert('Please enter a player ID...');
+            }
+
+        };
+
+        $scope.lookupPlayer = function(){
+
+          if($scope.lookup_player != undefined){
+              var player_obj = {pid:$scope.lookup_player};
+              $http.post('/LOOKUP', player_obj).then(function(response){
+                   console.log(response);
+                   console.log(response.data.length);
+                  // console.log(response.data[0].mob_list);
+
+
+                  if(response.data.length > 0) {
+                      var pid = response.data[0].pid;
+                      var list = response.data[0].mob_list;
+
+                      var new_html = '<ul>';
+                      new_html += '<li>' + pid + '</li>';
+
+                      // <li><img src = {{mob.pic}}></li>
+                      for (mob in list) {
+                          console.log(list[mob].pic);
+                          new_html += '<li><img src=' + list[mob].pic + '></li>';
+                          new_html += `<li>Sign: ${list[mob].sign}</li>`;
+                          new_html += `<li>Passive: ${list[mob].passive}</li>`;
+                          new_html += `<li>Ability: ${list[mob].ability}</li>`;
+                      }
+                      $('#load_player').html(new_html);
+                  }
+                  else{
+                      alert('Player ' + $scope.lookup_player + ' seems to not be in our records...');
+                  }
+              });
+          }
+          else{
+              alert('Please enter a player ID to search...')
+          }
+        };
+
+        $scope.addMob = function(){
+            console.log("attempting to add");
+
+            if($scope.add_pid != undefined &&
+                $scope.add_name != undefined ) {
+
+                var new_mob = {
+                    name: $scope.add_name,
+                    pic: $scope.add_pic,
+                    sign: $scope.add_sign,
+                    passive: $scope.add_passive,
+                    ability: $scope.add_ability,
+                    pr: $scope.add_pr,
+                    atk: $scope.add_atk,
+                    health: $scope.add_health,
+                    recv: $scope.add_recv,
+                };
+
+                var params = {
+                    pid: $scope.add_pid,
+                    mob: new_mob,
+                };
+
+                $http.post('/ADDMOB', params).then(function(res){
+                    console.log('success!');
+                    console.log(res);
+                    alert('Mob added!');
+                })
+            }
+            else if($scope.add_pid == undefined){
+                alert('Please enter player ID...')
+            }
+            else if($scope.add_name == undefined){
+                alert('Please enter monster name...')
+            }
+
+        };
+
+        $scope.deletePlayer = function() {
+            console.log('attempting to delete');
+
+            var player_obj = {
+                pid: $scope.delete_player
+            }
+
+            $http.post('/DELETEPLAYER', player_obj).then(function (res) {
+                console.log('Successfully deleted');
+            });
         };
 
       }]);
