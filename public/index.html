@@ -12,8 +12,9 @@
     <!--Stylesheet link -->
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 
   </head>
   <body>
@@ -27,60 +28,64 @@
       <button id = 'tog_lookup' ng-click = 'toggle_lookup()'>Lookup Player</button>
       <button id = 'tog_addMob' ng-click = 'toggle_addMob()'>Add Mob</button>
     </div>
-    <div class = 'add_player'>
+    <div class = 'add_playerC'>
+    <span class = 'add_player'>
       <form id = 'add-player-to-db'>
-        Player ID:
+        <p>Player ID:</p>
         <input ng-model="new_camper">
         <br>
         <button class = 'btn btn-primary' ng-click='addPlayer()'>Add</button>
       </form>
-    </div>
-    <div class = 'lookup'>
+    </span>
+  </div>
+  <div class = 'lookupC'>
+    <span class = 'lookup'>
       <form id = 'db_lookup'>
-        Player ID:
+        <p>Player ID:</p>
         <input ng-model='lookup_player'>
         <br>
         <button id ='db-lookup-btn' ng-click='lookupPlayer()'>Search</button>
       </form>
+    </span>
+  </div>
       <div id = 'load_player'>
 
       </div>
-    </div>
-    <div class = 'add'>
+    <span class = 'add'>
       <form id = 'add_mob'>
-        Player ID:
+        <p>Player ID:</p>
         <input ng-model = 'add_pid'>
         <br>
-        Mob Name:
+        <p>Mob Name:</p>
         <input ng-model = 'add_name' type = 'text' value = ''>
         <br>
-        Picture:
+        <p>Picture:</p>
         <input ng-model = 'add_pic' value = ''>
         <br>
-        Mob Sign:
+        <p>Mob Sign:</p>
         <input ng-model = 'add_sign' type = 'text' value = ''>
         <br>
-        Passive:
+        <p>Passive:</p>
         <input ng-model = 'add_passive' type = 'text' value = ''>
         <br>
-        Ability:
+        <p>Ability:</p>
         <input ng-model = 'add_ability' type = 'text' value = ''>
         <br>
-        Power Rating:
+        <p>Power Rating:</p>
         <input ng-model = 'add_pr' type = 'text' value = ''>
         <br>
-        Attack:
+        <p>Attack:</p>
         <input ng-model = 'add_atk' type = 'text' value = ''>
         <br>
-        Health:
+        <p>Health:</p>
         <input ng-model = 'add_health' type = 'text' value = ''>
         <br>
-        Recovery:
+        <p>Recovery:</p>
         <input ng-model = 'add_recv' type = 'text' value = ''>
         <br>
         <button ng-click = addMob()>Add</button>
       </form>
-    </div>
+    <span>
     <div class = 'delete'>
       <form id = 'delete_player'>
         Delete Player by ID:
@@ -116,30 +121,29 @@
 
           //Hide/Display html for adding camper
           $scope.toggle_addPlayer = function() {
-              console.log('toggle add player form');
               var x = document.getElementById("add-player-to-db");
-              if (x.style.display === "block") {
-                  x.style.display = "none";
+              if (x.style.visibility === "visible") {
+                  x.style.visibility = "hidden";
               } else {
-                  x.style.display = "block";
+                  x.style.visibility = "visible";
               }
           };
 
           $scope.toggle_lookup = function(){
               var x = document.getElementById("db_lookup");
-              if (x.style.display === "block") {
-                  x.style.display = "none";
+              if (x.style.visibility = "visible") {
+                    x.style.visibility = "hidden";
               } else {
-                  x.style.display = "block";
+                  x.style.visibility = "visible";
               }
           };
 
           $scope.toggle_addMob = function(){
               var x = document.getElementById("add_mob");
-              if (x.style.display === "block") {
-                  x.style.display = "none";
+              if (x.style.visibility = "visible") {
+                    x.style.visibility = "hidden";
               } else {
-                  x.style.display = "block";
+                  x.style.visibility = "visible";
               }
           }
 

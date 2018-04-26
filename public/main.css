@@ -8,6 +8,10 @@ ul{
     list-style: none;
 }
 
+p{
+  font-family: 'Black Han Sans', sans-serif;
+}
+
 .header{
     overflow: hidden;
     padding: 30px 20px;
@@ -25,7 +29,6 @@ a{
 
 .header a.header_title{
     font-size: 50px;
-
 }
 
 .btns{
@@ -44,19 +47,21 @@ a{
 
 .add_player{
     width:33%;
-    text-align: center;
+
 }
 
 .lookup{
     width:33%;
-    text-align: center;
-    margin-left: 33%;
 }
 
 .add{
     width:33%;
-    text-align: center;
-    margin-left: 66%;
+}
+
+span{
+    display:block;
+    float: left;
+    position:static;
 }
 
 .delete{
@@ -89,13 +94,16 @@ a{
 }
 
 #add-player-to-db{
-    display: none;
+    /* display: none; */
+    visibility: hidden;
 }
 
 #add_mob{
-    display: none;
+    /* display: none; */
+    visibility: hidden;
 }
 
 #db_lookup{
-    display: none;
+    /* display: none; */
+      visibility: hidden;
 }

@@ -14,9 +14,9 @@ app.use(bodyParser.json( ));
 app.get('/camper_list', function(req, res){
    console.log('/GET request received');
 
-    db.BattleCampDB.find(function(err, docs){
-        console.log(docs);
-        res.json(docs);
+    // db.BattleCampDB.find(function(err, docs){
+    //     console.log(docs);
+    //     res.json(docs);
     });
 
 });
